@@ -7,7 +7,7 @@
 .container{
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(135deg, #021949, #430357);
+  background: linear-gradient(135deg, #021949, #33013f);
   padding: 10px;
 }
 .todo-app{
@@ -54,13 +54,6 @@ button{
   cursor: pointer;
   border-radius: 40px;
 }
-.row button:last-child {
-  background: #5d08ac; /* Red color for Clear All button */
-  margin-left: 10px;
-  padding: 10px 10px; /* Match padding to Add button */
-  font-size: 10px; /* Match font size to Add button */
-}
-
 ul li {
   list-style: none;
   font-size: 17px;
@@ -88,9 +81,9 @@ ul li.checked{
 ul li.checked::before{
   background-image: url(images/checked.png);
 }
-ul li span{
+ul li .edit,
+ul li .delete {
   position: absolute;
-  right: 0;
   top: 5px;
   width: 40px;
   height: 40px;
@@ -99,11 +92,24 @@ ul li span{
   line-height: 40px;
   text-align: center;
   border-radius: 50%;
+  cursor: pointer;
+}
+
+ul li .delete {
+  right: 5px; /* Rightmost */
+}
+
+ul li .edit {
+  right: 50px; /* Spaced to the left of delete */
+}
+
+ul li .edit:hover,
+ul li .delete:hover {
+  background: #edeef0;
 }
 ul li span:hover{
   background: #edeef0;
 }
-
 /* Clear All Button Styling */
 #clear-button {
   padding: 10px 10px; /* Match padding to Add button */
@@ -113,35 +119,4 @@ ul li span:hover{
   border-radius: 40px; /* Same as Add button's border-radius */
   cursor: pointer;
   border: none;
-  transition: background-color 0.3s ease;
-}
-
-#clear-button:hover {
-  background-color: #460257; /* Darker shade on hover */
-}
-/* Edit button styling */
-ul li .edit {
-  ul li .edit {
-    position: 10px 10px;
-    right: 45px; /* To the left of the delete button */
-    
-    font-size: 10px; /* Match Add/Clear button font size */
-    color: white;
-    background-color: #5d08ac; /* Match Add button */
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    line-height: 40px; /* Centers the ✎ icon vertically */
-  }
-  
-  ul li .edit:hover {
-    background-color: #4a057d; /* Slightly darker on hover */
-  }
-  
-}
-
-ul li .edit:hover {
-  background: #edeef0;
-}
+  transition: background-color 0.3s ease;}

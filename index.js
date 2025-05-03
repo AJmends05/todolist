@@ -68,4 +68,4 @@ showTask();
 
 // Attach clear button functionality
 const clearButton = document.getElementById("clear-button");
-clearButton.addEventListener("click", clearTasks);
+clearButton.addEventListener("click", clearTasks)
