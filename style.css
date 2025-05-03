@@ -1,34 +1,55 @@
-*{
+* {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
 }
-.container{
+
+.container {
   width: 100%;
   min-height: 100vh;
   background: linear-gradient(135deg, #021949, #33013f);
   padding: 10px;
+  transition: background 0.3s ease;
 }
-.todo-app{
+
+.todo-app {
   width: 100%;
   max-width: 540px;
   background: #fff;
   margin: 100px auto 20px;
   padding: 40px 30px 70px;
   border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, color 0.3s ease;
 }
-.todo-app h2{
+
+.todo-app h2 {
   color: #002765;
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
-.todo-app h2 img{
+
+.todo-app h2 img {
   width: 30px;
   margin-left: 10px;
 }
-.row{
+
+/* Dark Mode Toggle Button */
+#toggle-dark-mode {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#toggle-dark-mode:hover {
+  transform: rotate(15deg);
+}
+
+.row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,15 +57,19 @@
   border-radius: 30px;
   padding-left: 20px;
   margin-bottom: 25px;
+  transition: background 0.3s ease;
 }
-input{
+
+input {
   flex: 1;
   border: none;
   outline: none;
   background: transparent;
   padding: 10px;
+  color: #000;
 }
-button{
+
+button {
   border: none;
   outline: none;
   padding: 10px 10px;
@@ -53,7 +78,9 @@ button{
   font-size: 10px;
   cursor: pointer;
   border-radius: 40px;
+  transition: background-color 0.3s ease;
 }
+
 ul li {
   list-style: none;
   font-size: 17px;
@@ -61,8 +88,20 @@ ul li {
   user-select: none;
   cursor: pointer;
   position: relative;
+  margin-bottom: 12px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
 }
-ul li::before{
+
+ul li:hover {
+  transform: translateY(-2px);
+}
+
+ul li::before {
   content: '';
   position: absolute;
   height: 28px;
@@ -74,13 +113,16 @@ ul li::before{
   top: 12px;
   left: 8px;
 }
-ul li.checked{
+
+ul li.checked {
   color: #555;
   text-decoration: line-through;
 }
-ul li.checked::before{
+
+ul li.checked::before {
   background-image: url(images/checked.png);
 }
+
 ul li .edit,
 ul li .delete {
   position: absolute;
@@ -93,30 +135,114 @@ ul li .delete {
   text-align: center;
   border-radius: 50%;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 ul li .delete {
-  right: 5px; /* Rightmost */
+  right: 5px;
 }
 
 ul li .edit {
-  right: 50px; /* Spaced to the left of delete */
+  right: 50px;
 }
 
 ul li .edit:hover,
 ul li .delete:hover {
   background: #edeef0;
 }
-ul li span:hover{
+
+ul li span:hover {
   background: #edeef0;
 }
-/* Clear All Button Styling */
-#clear-button {
-  padding: 10px 10px; /* Match padding to Add button */
-  font-size: 10px; /* Match font size to Add button */
-  background-color: #5d08ac; /* Same as Add button's color */
+
+/* Inline Edit Input and Save Button */
+.edit-input {
+  width: 70%;
+  padding: 8px;
+  margin-right: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.save-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  background-color: #5d08ac;
   color: white;
-  border-radius: 40px; /* Same as Add button's border-radius */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Clear All Button */
+#clear-button {
+  padding: 10px 10px;
+  font-size: 10px;
+  background-color: #5d08ac;
+  color: white;
+  border-radius: 40px;
   cursor: pointer;
   border: none;
-  transition: background-color 0.3s ease;}
+  transition: background-color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background: #22012b;
+  color: #e0e0e0;
+}
+
+body.dark-mode .container {
+  background: #121212;
+}
+
+body.dark-mode .todo-app {
+  background: #050008;
+  color: #e0e0e0;
+}
+
+body.dark-mode ul li {
+  background: #2c2c2c;
+  color: #e0e0e0;
+}
+
+body.dark-mode .row {
+  background: #2a2a2a;
+}
+
+body.dark-mode input {
+  color: #fff;
+}
+
+body.dark-mode button,
+body.dark-mode .save-btn {
+  background-color: #7d31d5;
+}
+
+body.dark-mode ul li .edit,
+body.dark-mode ul li .delete {
+  color: #bbb;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    height: 0;
+    margin-bottom: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 1.5s forwards;
+}

@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>To-Do List App</title>
-      <link rel = "stylesheet" href = "style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List App</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class = "container">
-    <div class = "todo-app">
-        <h2>To-Do List <img src="images/icon.png" ></h2>
-        <div class = "row">
-            <input type = "text" id="input-box" placeholder="Add your text">
-            <button onclick="addTask()">Add</button>
-            <!-- Clear All Button inside the row -->
-            <button id="clear-button">Clear All</button>
-        </div>
-        <ul id="list-container">
-            <!--<li class="checked">Task 1</li>
-            <li>Task 2</li>
-            <li>Task 3</li>-->
-        </ul>
-    </div>
+  <div class="container">
+    <div class="todo-app">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2>To-Do List <img src="images/icon.png" alt="icon" /></h2>
+        <!-- Dark Mode Toggle Button -->
+        <button id="toggle-dark-mode" title="Toggle Dark Mode">🌙</button>
+      </div>
 
+      <div class="row">
+        <input type="text" id="input-box" placeholder="Add your text" />
+        <button onclick="addTask()">Add</button>
+        <button id="clear-button">Clear All</button>
+      </div>
+
+      <ul id="list-container">
+        <!-- Tasks go here -->
+      </ul>
+    </div>
   </div>
-  <script src = "index.js"></script>
+
+  <script src="index.js"></script>
+  <script>
+    const toggleButton = document.getElementById("toggle-dark-mode");
+
+    toggleButton.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      // Update icon
+      toggleButton.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
