@@ -20,13 +20,13 @@
   background: #fff;
   margin: 100px auto 20px;
   padding: 40px 30px 70px;
-  border-radius: 25px;
+  border-radius: 60px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   transition: background 0.3s ease, color 0.3s ease;
 }
 
 .todo-app h2 {
-  color: #002765;
+  color: #011f4e;
   display: flex;
   align-items: center;
   margin-bottom: 20px;

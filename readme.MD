@@ -9,6 +9,8 @@ Delete tasks
 
 View tasks in real time
 
+Order tasks in order of priority
+
 Clean and responsive user interface
 
 📂 Technologies Used
