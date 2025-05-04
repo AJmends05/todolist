@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +20,7 @@
   background: #fff;
   margin: 100px auto 20px;
   padding: 40px 30px 70px;
-  border-radius: 10px;
+  border-radius: 25px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   transition: background 0.3s ease, color 0.3s ease;
 }
@@ -49,44 +50,12 @@
   transform: rotate(15deg);
 }
 
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #edeef0;
-  border-radius: 30px;
-  padding-left: 20px;
-  margin-bottom: 25px;
-  transition: background 0.3s ease;
-}
-
-input {
-  flex: 1;
-  border: none;
-  outline: none;
-  background: transparent;
-  padding: 10px;
-  color: #000;
-}
-
-button {
-  border: none;
-  outline: none;
-  padding: 10px 10px;
-  background: #5d08ac;
-  color: #fff;
-  font-size: 10px;
-  cursor: pointer;
-  border-radius: 40px;
-  transition: background-color 0.3s ease;
-}
-
 ul li {
   list-style: none;
   font-size: 17px;
   padding: 12px 8px 12px 50px;
   user-select: none;
-  cursor: pointer;
+  cursor: grab;
   position: relative;
   margin-bottom: 12px;
   background: #f9f9f9;
@@ -95,6 +64,10 @@ ul li {
   transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
   opacity: 0;
   animation: fadeIn 0.5s forwards;
+}
+
+ul li:active {
+  cursor: grabbing;
 }
 
 ul li:hover {
@@ -106,21 +79,25 @@ ul li::before {
   position: absolute;
   height: 28px;
   width: 28px;
-  border-radius: 50%;
-  background-image: url(images/unchecked.png);
-  background-size: cover;
-  background-position: center;
   top: 12px;
   left: 8px;
-}
-
-ul li.checked {
-  color: #555;
-  text-decoration: line-through;
+  border: 2px solid #aaa;
+  border-radius: 10px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
 }
 
 ul li.checked::before {
-  background-image: url(images/checked.png);
+  content: '✔️';
+  font-size: 18px;
+  color: white;
+  background-color: #5d08ac;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
 }
 
 ul li .edit,
@@ -153,6 +130,39 @@ ul li .delete:hover {
 
 ul li span:hover {
   background: #edeef0;
+}
+
+/* Input section below tasks */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #edeef0;
+  border-radius: 30px;
+  padding-left: 20px;
+  margin-top: 25px;
+  transition: background 0.3s ease;
+}
+
+input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+  color: #000;
+}
+
+button {
+  border: none;
+  outline: none;
+  padding: 10px 10px;
+  background: #5d08ac;
+  color: #fff;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 40px;
+  transition: background-color 0.3s ease;
 }
 
 /* Inline Edit Input and Save Button */
@@ -245,4 +255,16 @@ body.dark-mode ul li .delete {
 
 .fade-out {
   animation: fadeOut 1.5s forwards;
+}
+
+/* SortableJS Drag & Drop Styles */
+.sortable-ghost {
+  opacity: 0.4;
+  background: #d1c4e9;
+  transform: scale(1.02);
+}
+
+.sortable-chosen {
+  background: #e0bbff;
+  box-shadow: 0 0 10px rgba(93, 8, 172, 0.5);
 }

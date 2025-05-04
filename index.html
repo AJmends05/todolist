@@ -15,26 +15,38 @@
         <button id="toggle-dark-mode" title="Toggle Dark Mode">🌙</button>
       </div>
 
+      <ul id="list-container">
+        <!-- Tasks go here -->
+      </ul>
+
+      <!-- Input section at the bottom -->
       <div class="row">
         <input type="text" id="input-box" placeholder="Add your text" />
         <button onclick="addTask()">Add</button>
         <button id="clear-button">Clear All</button>
       </div>
-
-      <ul id="list-container">
-        <!-- Tasks go here -->
-      </ul>
     </div>
   </div>
 
+  <!-- SortableJS for task reordering -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
   <script src="index.js"></script>
   <script>
+    // Dark Mode Toggle
     const toggleButton = document.getElementById("toggle-dark-mode");
-
     toggleButton.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
-      // Update icon
       toggleButton.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+    });
+
+    // Initialize Sortable for task list
+    new Sortable(document.getElementById('list-container'), {
+      animation: 150,
+      onEnd: () => {
+        // Save new order
+        localStorage.setItem("data", document.getElementById("list-container").innerHTML);
+      }
     });
   </script>
 </body>

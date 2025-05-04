@@ -102,10 +102,13 @@ clearButton.addEventListener("click", clearTasks);
 // Dark mode toggle
 toggleButton.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
-  // Change icon based on dark mode
-  if (document.body.classList.contains("dark-mode")) {
-    toggleButton.textContent = "☀️"; // Switch to light mode icon
-  } else {
-    toggleButton.textContent = "🌙"; // Switch to dark mode icon
+  toggleButton.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+});
+
+// Initialize SortableJS for reordering tasks
+new Sortable(listContainer, {
+  animation: 150,
+  onEnd: function () {
+    saveData();
   }
 });
